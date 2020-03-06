@@ -3,7 +3,7 @@ using namespace cv;
 
 int main()
 {
-	cv::Mat src_color = imread("G:\\jlw\\timg.jpg");
+	cv::Mat src_color = imread("G:\\jlw\\ͼƬ1.jpg");
 	std::vector<cv::Mat> channels;
 	cv::split(src_color, channels);
 	cv::Mat B = channels.at(0);
