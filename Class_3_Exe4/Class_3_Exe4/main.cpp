@@ -15,5 +15,9 @@ int main()
 			Pix[average]++;
 		}
 	}
+	for (int i = 0; i < 256; i++)
+	{
+		Pix[i]= Pix[i]/(height*width);
+	}
 	waitKey(0);
 }
