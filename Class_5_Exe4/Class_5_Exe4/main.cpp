@@ -3,6 +3,14 @@
 using namespace cv;
 using namespace std;
 
+int myfabs(int a, int b)
+{
+	if( a > b)
+		return a - b;
+	else
+		return b - a;
+}
+
 int main()
 {
 	Mat lableMat;
@@ -13,11 +21,12 @@ int main()
 	Mat dstMat;
 	Mat Core = getStructuringElement(MORPH_ELLIPSE, Size(10, 10));
 	int i;
-	threshold(srcMat, dstMat, 100, 255, THRESH_BINARY);
-
+	int count=0;
+	//threshold(srcMat, dstMat, 100, 255, THRESH_BINARY);
+    threshold(srcMat, dstMat, 100, 255, THRESH_BINARY_INV);
 	dilate(dstMat, resultMat, Core);
 
-	//threshold(srcMat, dstMat, 100, 255, THRESH_BINARY_INV);
+	
 
 	int nComp = cv::connectedComponentsWithStats(dstMat,
 		lableMat,
@@ -28,11 +37,16 @@ int main()
 
 	for ( i = 1; i < nComp; i++)
 	{
-		cout << "connected Components NO." << i << endl;
-		cout << "pixels = " << statsMat.at<int>(i, 4) << endl;
-		cout << "width = " << statsMat.at<int>(i, 2) << endl;
-		cout << "height = " << statsMat.at<int>(i, 3) << endl;
-		cout << endl;
+		if (statsMat.at<int>(i, 4) > 1000
+			&&myfabs(statsMat.at<int>(i, 2), statsMat.at<int>(i, 3))<400)
+		{
+			count++;
+			cout << "connected Components NO." << count << endl;
+			cout << "pixels = " << statsMat.at<int>(i, 4) << endl;
+			cout << "width = " << statsMat.at<int>(i, 2) << endl;
+			cout << "height = " << statsMat.at<int>(i, 3) << endl;
+			cout << endl;
+		}
 		
 	}
 	cout << "Final Components Num = TotalNum/2-1=" << i/2-1 << endl;
