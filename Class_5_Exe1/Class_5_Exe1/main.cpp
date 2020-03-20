@@ -15,7 +15,6 @@ int main()
 	morphologyEx(dstMat, result_3, MORPH_OPEN,Core);
 	morphologyEx(dstMat, result_4, MORPH_CLOSE, Core);
 	
-	//adaptiveThreshold(srcMat, result_2, 255, ADAPTIVE_THRESH_GAUSSIAN_C, THRESH_BINARY_INV, 15, 10);
 	imshow("src", srcMat);
     imshow("res_1", result_1);
 	imshow("res_2", result_2);
