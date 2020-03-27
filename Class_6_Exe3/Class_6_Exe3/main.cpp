@@ -23,7 +23,7 @@ int main()
 	{
 		Mat frame;
 		//Mat hsvMat;
-		Mat detectMat;
+		Mat detectMatX;
 
 		cap >> frame;
 		Size ResImgSiz = Size(frame.cols*scale, frame.rows*scale);
@@ -37,9 +37,9 @@ int main()
 
 		//cv::inRange(hsvMat, Scalar(i_minH, i_minS, i_minV), Scalar(i_maxH, i_maxS, i_maxV), detectMat);
 
-		blur(rFrame, detectMat, CoreSiz);
+		GaussianBlur(rFrame, detectMatX, CoreSiz,1,1);
 
-		imshow("while:in the range", detectMat);
+		imshow("while:in the range", detectMatX);
 		imshow("frame", rFrame);
 
 		waitKey(30);

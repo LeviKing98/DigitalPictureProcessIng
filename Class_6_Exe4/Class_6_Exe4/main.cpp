@@ -23,7 +23,9 @@ int main()
 	{
 		Mat frame;
 		//Mat hsvMat;
-		Mat detectMat;
+		Mat detectMatX, detectMatXAbs;
+		Mat detectMatY, detectMatYAbs;
+		Mat dstImage;
 
 		cap >> frame;
 		Size ResImgSiz = Size(frame.cols*scale, frame.rows*scale);
@@ -37,9 +39,16 @@ int main()
 
 		//cv::inRange(hsvMat, Scalar(i_minH, i_minS, i_minV), Scalar(i_maxH, i_maxS, i_maxV), detectMat);
 
-		blur(rFrame, detectMat, CoreSiz);
+		Sobel(rFrame, detectMatX, CV_16SC1, 1, 0, 3);
+		convertScaleAbs(detectMatX, detectMatXAbs);
+		Sobel(rFrame, detectMatY, CV_16SC1, 0, 1, 3);
+		convertScaleAbs(detectMatY, detectMatYAbs);
 
-		imshow("while:in the range", detectMat);
+		addWeighted(detectMatXAbs,0.5, detectMatYAbs,0.5,0, dstImage);
+
+		imshow("detectMatX", detectMatX);
+		imshow("detectMatY", detectMatY);
+		imshow("dstImage", dstImage);
 		imshow("frame", rFrame);
 
 		waitKey(30);
