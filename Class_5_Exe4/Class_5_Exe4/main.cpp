@@ -26,8 +26,6 @@ int main()
     threshold(srcMat, dstMat, 100, 255, THRESH_BINARY_INV);
 	dilate(dstMat, resultMat, Core);
 
-	
-
 	int nComp = cv::connectedComponentsWithStats(dstMat,
 		lableMat,
 		statsMat,
@@ -47,7 +45,6 @@ int main()
 			cout << "height = " << statsMat.at<int>(i, 3) << endl;
 			cout << endl;
 		}
-		
 	}
 	cout << "Final Components Num = TotalNum/2-1=" << i/2-1 << endl;
 
