@@ -8,7 +8,7 @@ int main()
 	VideoCapture cap;
 	cap.open(0);
 
-	double scale = 0.5;
+	double scale = 0.6;
 
 	/*double i_minH = 0;
 	double i_maxH = 20;
