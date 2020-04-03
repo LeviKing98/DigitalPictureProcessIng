@@ -40,6 +40,7 @@ int main()
 		
 		//GaussianBlur(rFrame, MedMat, CoreSiz, 50, 50);
 		blur(rFrame, MedMat, CoreSiz);
+
 		rFrame.copyTo(resMat);
 
 		MedMat.copyTo(resMat, detectMat);
