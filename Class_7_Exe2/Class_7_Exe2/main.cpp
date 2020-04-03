@@ -8,6 +8,7 @@ int main()
 	Mat dstMat;
 	Mat srcMat = imread("G:\\jlw\\timg.jpg",1);
 
+
 	if (srcMat.empty()) return -1;
 
 	float angle = -10.0, scale = 1;
