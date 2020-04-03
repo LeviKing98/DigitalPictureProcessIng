@@ -24,6 +24,7 @@ int main()
 
 	const Mat affine_matrix = getAffineTransform(src_pt, dst_pt);
 
+
 	warpAffine(srcMat,dstMat,affine_matrix,srcMat.size());
 
 	imshow("src", srcMat);
