@@ -27,4 +27,5 @@ int main()
 	imshow("canny", canny);
 	imshow("srcMat", srcMat);
 	waitKey(0);
+
 }
