@@ -26,8 +26,8 @@ int main()
 
 	warpAffine(srcMat, dstMat, affine_matrix, srcMat.size());*/
 
-	double angle = 90;
-	double scale = 1.5;
+	double angle = 45;
+	double scale = 1;
 
 	Point2f center(srcMat.cols / 2.0, srcMat.rows / 2.0);
 	Mat rot = getRotationMatrix2D(center, angle, scale);
