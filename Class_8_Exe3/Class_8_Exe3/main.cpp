@@ -5,12 +5,12 @@ using namespace std;
 
 int main()
 {
-	Mat srcMat = imread("G://jlw//metal-part-distorted-03.png", 0);
+	Mat srcMat = imread("G://jlw//metal-part-distorted-03.png");
 	Mat canny;
 	Canny(srcMat, canny, 120, 150);
 
 	vector<Vec4f> lines;
-	HoughLinesP(canny, lines, 1, CV_PI / 180,30,8,10);
+	HoughLinesP(canny, lines, 1, CV_PI / 180,50,10,15);
 
 	Mat lineMat;
 	HoughLines(canny, lineMat, 1, CV_PI / 180,100);
