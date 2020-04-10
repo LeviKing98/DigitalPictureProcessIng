@@ -10,7 +10,7 @@ int main()
 	Canny(srcMat, canny, 120, 150);
 
 	vector<Vec4f> lines;
-	HoughLinesP(canny, lines, 1, CV_PI / 180,25,1,10);
+	HoughLinesP(canny, lines, 1, CV_PI / 180,30,8,10);
 
 	Mat lineMat;
 	HoughLines(canny, lineMat, 1, CV_PI / 180,100);
