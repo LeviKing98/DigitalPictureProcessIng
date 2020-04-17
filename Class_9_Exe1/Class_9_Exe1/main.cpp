@@ -3,14 +3,16 @@
 using namespace cv;
 using namespace std;
 
+float myfabs(float a, float b);
 int main()
 {
-	Mat srcMat = imread("G:\\jlw\\Picture\\die_on_chip.png", 0);
+	Mat srcMat = imread("G:\\jlw\\Picture\\rim.png", 0);
 	Mat bnyMat;
-	Mat disMat = imread("G:\\jlw\\Picture\\die_on_chip.png");
-	Size2f lmtSize = {50,50};
+	Mat disMat = imread("G:\\jlw\\Picture\\rim.png");
+	Size2f lmtSizeMax = { 100,100 };
+	Size2f lmtSizeMin = { 30,30 };
 
-	threshold(srcMat, bnyMat, 160, 255, THRESH_BINARY);
+	threshold(srcMat, bnyMat, 110, 255, THRESH_BINARY_INV);
 
 	vector<vector<Point>> contours;
 	vector<Vec4i> hierarchy;
@@ -18,7 +20,9 @@ int main()
 
 	for (int i = 0; i < contours.size(); i++){
 		RotatedRect rbox = minAreaRect(contours[i]);
-		if (rbox.size.height > lmtSize.height && rbox.size.width > lmtSize.width) {
+		if (rbox.size.height > lmtSizeMin.height && rbox.size.width > lmtSizeMin.width
+			&&rbox.size.height < lmtSizeMax.height && rbox.size.width < lmtSizeMax.width
+			&& myfabs(rbox.size.height, rbox.size.width) < 10) {
 			drawContours(disMat, contours, i, Scalar(0, 255, 255), 1, 8);
 			Point2f vtx[4];
 			rbox.points(vtx);
@@ -31,4 +35,11 @@ int main()
 	imshow("bnyMat", bnyMat);
 	imshow("disMat", disMat);
 	waitKey(0);
+}
+float myfabs(float a, float b)
+{
+	if (a > b)
+		return a - b;
+	else
+		return b - a;
 }
