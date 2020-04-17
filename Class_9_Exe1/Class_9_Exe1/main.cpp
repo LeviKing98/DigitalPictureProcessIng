@@ -4,6 +4,7 @@ using namespace cv;
 using namespace std;
 
 float myfabs(float a, float b);
+
 int main()
 {
 	Mat srcMat = imread("G:\\jlw\\Picture\\rim.png", 0);
