@@ -15,8 +15,9 @@ int main()
 	
 	Size ResImgSiz = Size(frtMat.cols*scale, frtMat.rows*scale);
 	srcMat = Mat(ResImgSiz, frtMat.type());
-	dstMat = srcMat;
 	resize(frtMat, srcMat, ResImgSiz, INTER_LINEAR);
+	dstMat = srcMat;
+
 	cvtColor(srcMat, gryMat, COLOR_BGR2GRAY);
 
 	double i_minH = 1;
