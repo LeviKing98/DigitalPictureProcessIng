@@ -70,7 +70,7 @@ int selectPolygon(cv::Mat srcMat, cv::Mat& dstMat)
 
 int mouseROI()
 {
-	cv::Mat srcMat = imread("E:\\课程\\大二下\\数字图像处理\\lena.jpg");
+	cv::Mat srcMat = imread("E:大二下\\数图\\lena.jpg");
 	cv::Mat dstMat;
 
 	selectPolygon(srcMat, dstMat);
@@ -84,7 +84,7 @@ int mouseROI()
 
 int dftDemo() {
 
-	cv::Mat srcMat = imread("E:\\课程\\大二下\\数字图像处理\\lena.jpg", 0);
+	cv::Mat srcMat = imread("E:\\大二下\\数图\\lena.jpg", 0);
 
 	if (srcMat.empty()) {
 		std::cout << "failed to read image!:" << std::endl;
@@ -157,7 +157,7 @@ int dftDemo() {
 int ifftDemo()
 {
 	cv::Mat dst;
-	cv::Mat src = imread("E:\\课程\\大二下\\数字图像处理\\lena.jpg", 0);
+	cv::Mat src = imread("E:\\大二下\\数图\\lena.jpg", 0);
 
 	int m = getOptimalDFTSize(src.rows); //2,3,5的倍数有更高效率的傅里叶变换
 	int n = getOptimalDFTSize(src.cols);
