@@ -157,7 +157,7 @@ int dftDemo() {
 int ifftDemo()
 {
 	cv::Mat dst;
-	cv::Mat src = imread("E:\\大二下\\数图\\lena.jpg", 0);
+	cv::Mat src = imread("‪K:\\学习\\数图\\etest.jpg", 0);
 
 	int m = getOptimalDFTSize(src.rows); //2,3,5的倍数有更高效率的傅里叶变换
 	int n = getOptimalDFTSize(src.cols);

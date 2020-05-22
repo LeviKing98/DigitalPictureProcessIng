@@ -1,5 +1,5 @@
 ﻿#include <iostream>
-#include <opencv.hpp>
+#include <opencv2/opencv.hpp>
 using namespace std;
 using namespace cv;
 
@@ -10,8 +10,8 @@ int main()
 	for (int i = 0; i < 256; i++) {
 		Excel[i] = pow(i * 1.0 / 255, gamma);
 	}
-
-	cv::Mat srcMat = imread("‪K:\\学习\\数图\\face.jpg", 0);
+	cv::Mat srcMat = imread("‪D:\\face.jpg", 0);
+	cv::Mat srcMat = imread("D:\\face.jpg", 0);
 	for (int i = 0; i < srcMat.rows; i++)
 	{
 		for (int j = 0; j < srcMat.cols; j++)
