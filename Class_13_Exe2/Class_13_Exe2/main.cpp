@@ -63,8 +63,6 @@ int gaussianThreshold(cv::Mat srcMat, cv::Mat meanMat, cv::Mat varMat, float wei
 
 int main()
 {
-	//实例化的同时初始化
-	//VideoCapture capture("D:\\opencv_picture_test\\videos\\video1.avi");		//类似于 int a=1;
 	//----------------------读取视频文件--------------------------
 	VideoCapture capVideo(0);
 
@@ -76,7 +74,6 @@ int main()
 
 	//用来计算背景模型的图像
 	std::vector<cv::Mat> srcMats;
-
 
 	//参数设置
 	int nBg = 200;		//用来建立背景模型的数量
@@ -101,7 +98,6 @@ int main()
 			if (cnt == 0) {
 				std::cout << "reading frame " << std::endl;
 			}
-
 		}
 		else if (cnt == nBg) {
 			//计算模型
@@ -118,8 +114,6 @@ int main()
 			imshow("frame", frame);
 			waitKey(30);
 		}
-
 		cnt++;
-
 	}
 }
