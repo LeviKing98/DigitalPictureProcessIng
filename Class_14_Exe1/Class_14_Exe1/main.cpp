@@ -33,8 +33,8 @@ int main()
 	int tgt_x = 0;
 	int tgt_y = 0;
 	
-	for (int i=0; i < orgMat.cols- srcMat.cols; i++) {
-		for (int j=0; j < orgMat.rows-srcMat.rows; j++) {
+	for (int i=90; i < orgMat.cols- srcMat.cols; i++) {
+		for (int j=90; j < orgMat.rows-srcMat.rows; j++) {
 			rect = Rect(i, j, 108, 48);
 			ROIMat = orgMat(rect);
 			SetHist(ROIMat, nX, nY, ref_hist1);
@@ -76,18 +76,9 @@ void SetHist(Mat srcMat, int nX, int nY, float* ref_hist)
 
 	cartToPolar(gx, gy, mag, angle, true);
 	//直方图清零
-	for (int i = 0; i < nY; i++) {
-		for (int j = 0; j < nX; j++) {
-			count++;
-			for (int m = 0; m < 16; m++) {
-				for (int n = 0; n < 16; n++) {
-					ref_hist[count * 8 + QuantAngle(angle.at<float>(i * 16 + m, j * 16 + n))] = 0;
-				}
-			}
-		}
-	}
+	for (int i = 0; i < 8 * nY * nX; i++)
+		ref_hist[i] = 0;
 	//直方图计算
-	count = -1;
 	for (int i = 0; i < nY; i++) {
 		for (int j = 0; j < nX; j++) {
 			count++;
