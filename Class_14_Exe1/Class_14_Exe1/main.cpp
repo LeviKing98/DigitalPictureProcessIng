@@ -33,8 +33,8 @@ int main()
 	int tgt_x = 0;
 	int tgt_y = 0;
 	
-	for (int i=90; i < orgMat.cols- srcMat.cols; i++) {
-		for (int j=90; j < orgMat.rows-srcMat.rows; j++) {
+	for (int i=0; i < orgMat.cols- srcMat.cols; i++) {
+		for (int j=0; j < orgMat.rows-srcMat.rows; j++) {
 			rect = Rect(i, j, 108, 48);
 			ROIMat = orgMat(rect);
 			SetHist(ROIMat, nX, nY, ref_hist1);
