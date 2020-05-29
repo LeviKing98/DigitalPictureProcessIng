@@ -4,18 +4,16 @@ using namespace cv;
 using namespace std;
 int main()
 {
-	//改变控制台字体颜色
-	system("color 01");
 	VideoCapture capture(0);
 	int cnt = 0;
-	Mat frame;	//存储每一帧的图像
+	Mat frame;	
 	Mat tempMat;
 	Mat refMat;
 	Mat resultMat;
 	Mat dispMat;
 	while (1)
 	{
-		capture >> frame;	//读取当前帧
+		capture >> frame;	
 		if (cnt == 0) {
 			Rect2d r;
 			r = selectROI(frame, true);
