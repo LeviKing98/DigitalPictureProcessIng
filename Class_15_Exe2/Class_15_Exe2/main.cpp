@@ -19,18 +19,11 @@ VideoCapture createInput(bool useCamera, std::string videoPath)
 	return capVideo;
 }
 
-void segColor()
+void segColor(Mat src)
 {
-
-	Mat src = imread("K:\\Ñ§Ï°\\ÊıÍ¼\\¿ÖÁú.jpg");
-
+	//Mat src = imread("K:\\Ñ§Ï°\\ÊıÍ¼\\¿ÖÁú.jpg");
 	Mat mask = Mat::zeros(src.size(), CV_8UC1);
 	createMaskByKmeans(src, mask);
-
-	imshow("src", src);
-	imshow("mask", mask);
-
-	waitKey(0);
 }
 
 int createMaskByKmeans(cv::Mat src, cv::Mat& mask)
@@ -65,10 +58,42 @@ int createMaskByKmeans(cv::Mat src, cv::Mat& mask)
 			mask.at<uchar>(row, col) = fg[labels.at<int>(row * width + col)];
 		}
 	}
+	if (mask.at<uchar>(0, 0) == 255)
+	{
+		mask = 255 - mask;
+	}
 	return 0;
 }
 
 int main()
 {
-	segColor();
+	Mat srcframe;
+	Mat dstframe;
+	Mat ROIMat;
+	VideoCapture srcCap;
+	srcCap.open("K:\\Ñ§Ï°\\ÊıÍ¼\\ÂÌÄ»¿ÙÏñÌ¹¿ËÊÓÆµËØ²Ä.mp4");
+
+	VideoCapture dstCap;
+	dstCap.open("K:\\Ñ§Ï°\\ÊıÍ¼\\VID_20200602_221135.mp4");
+	while (1)
+	{
+		srcCap >> srcframe;
+		if (srcframe.empty())
+			break;
+		dstCap >> dstframe;
+		if (dstframe.empty())
+			break;
+		resize(dstframe, dstframe, srcframe.size());
+		ROIMat = Mat::zeros(srcframe.size(), CV_8UC1);
+		createMaskByKmeans(srcframe, ROIMat);
+
+		srcframe.copyTo(dstframe, ROIMat);
+
+		imshow("srcframe", srcframe);
+		imshow("dstframe", dstframe);
+		imshow("ROIMat", ROIMat);
+		
+		if (waitKey(33) >= 0) 
+			break;
+	}
 }
