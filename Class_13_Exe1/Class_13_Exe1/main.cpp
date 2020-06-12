@@ -26,12 +26,11 @@ int main()
 		if (cnt == 0) {
 			frame.copyTo(bgMat);
 		}
-
 		else {
 			absdiff(frame, bgMat, subMat);
 			threshold(subMat, bny_subMat, 50, 255, CV_THRESH_BINARY);
 
-			imshow("b_subMat",bny_subMat);
+			imshow("bny_subMat",bny_subMat);
 			imshow("subMat", subMat);
 			waitKey(30);
 		}

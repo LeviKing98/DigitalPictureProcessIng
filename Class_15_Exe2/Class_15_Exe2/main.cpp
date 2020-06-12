@@ -93,7 +93,6 @@ int main()
 		imshow("dstframe", dstframe);
 		imshow("ROIMat", ROIMat);
 		
-		if (waitKey(33) >= 0) 
-			break;
+		waitKey(10);
 	}
 }
